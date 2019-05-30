@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
+<mapper namespace="chaoyang.tempmonitor.mapper.SampleMapper">
+
+
+
+    <!-- insert tempinfo -->
+    <insert id="insert" parameterType="chaoyang.tempmonitor.model.SampleInfo">
+        INSERT INTO SAMPLE_INFO(room_number,sample_specification,tire_number,sample_reporter_name,sample_number,sample_load_rode,sample_test_date,sample_conversion,sample_inspection_unit,sample_tire_radius,sample_production_number,cam_ip,cam_station_number,sample_brand,sample_level,sample_pattern,sample_person,sample_scheme,sample_filePath,sample_object_name,sample_running_state,first_point_frequency,first_time_interval,second_point_frequency,second_time_interval,third_point_frequency)
+        VALUES(#{room_number},#{sample_specification},#{tire_number},#{sample_reporter_name},#{sample_number},#{sample_load_rode},#{sample_test_date},#{sample_conversion},#{sample_inspection_unit},#{sample_tire_radius},#{sample_production_number},#{cam_ip},#{cam_station_number},#{sample_brand},#{sample_level},#{sample_pattern},#{sample_person},#{sample_scheme},#{sample_filePath},#{sample_object_name},#{sample_running_state},#{first_point_frequency},#{first_time_interval},#{second_point_frequency},#{second_time_interval},#{third_point_frequency});
+    </insert>
+
+
+    <select id="findRoom" parameterType="int" resultType="chaoyang.tempmonitor.model.Room">
+        SELECT id,room_number,cam_id,cam_position,cam_ip,cam_user,cam_pwd,cam_port,cam_type,cam_channel
+        FROM ROOM_INFO
+        WHERE room_number =#{room_number};
+    </select>
+
+    <select id="get_Room_state" resultType="chaoyang.tempmonitor.model.SampleInfo">
+        SELECT * from sample_info where exists (select sample_id from(select max(sample_id) as sample_id from sample_info group by room_number) as t where t.sample_id=sample_info.sample_id);
+
+    </select>
+    <update id="update_state" parameterType="java.util.Map" >
+
+        update sample_info set sample_running_state="false" where room_number=#{room_number} and cam_station_number=#{cam_station_number}order by sample_id desc limit 3;
+    </update>
+    <select id="get_Current_room_data" parameterType="int" resultType="chaoyang.tempmonitor.model.SampleInfo">
+        select * from sample_info where exists(
+        select sample_id from(select max(sample_id) as sample_id from (select * from sample_info where room_number=#{room_number}) as e group by e.cam_station_number) as t
+        where t.sample_id =sample_info.sample_id
+        )
+
+    </select>
+
+</mapper>

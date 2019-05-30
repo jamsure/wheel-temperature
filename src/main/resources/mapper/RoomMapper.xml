@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
+<mapper namespace="chaoyang.tempmonitor.mapper.RoomMapper">
+
+    <!--login user -->
+
+    <select id="showip" parameterType="int"  resultType="chaoyang.tempmonitor.model.Room">
+        SELECT id,room_number,cam_id,cam_position,cam_ip,cam_user,cam_pwd,cam_port,cam_type,cam_channel FROM ROOM_INFO WHERE ID =#{id};
+    </select>
+
+    <!--插入房间信息 -->
+    <insert id="insertRoomInfo" parameterType="chaoyang.tempmonitor.model.Room">
+        INSERT INTO ROOM_INFO(room_number,cam_id,cam_position,cam_ip,cam_user,cam_pwd,cam_port,cam_type,cam_channel,cam_station_number)
+        VALUES(#{room_number},#{cam_id},#{cam_position},#{cam_ip},#{cam_user},#{cam_pwd},#{cam_port},#{cam_type},#{cam_channel},#{cam_station_number});
+    </insert>
+
+
+    <select id="findRoom" parameterType="java.lang.Integer" resultType="chaoyang.tempmonitor.model.Room">
+        SELECT id,room_number,cam_id,cam_position,cam_ip,cam_user,cam_pwd,cam_port,cam_type,cam_channel,cam_station_number
+        FROM ROOM_INFO
+        WHERE room_number =#{room_number};
+    </select>
+
+    <select id="findRoomMethod" parameterType="java.util.Map" resultType="chaoyang.tempmonitor.model.Room">
+        SELECT id,room_number,cam_id,cam_position,cam_ip,cam_user,cam_pwd,cam_port,cam_type,cam_channel,cam_station_number
+        FROM ROOM_INFO
+        WHERE room_number =#{room_number}
+        AND cam_station_number = #{cam_station_number};
+    </select>
+
+
+</mapper>

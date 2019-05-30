@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+    box-sizing: border-box;
+    list-style: none;
+}
+
+h2 {
+    margin: 100px auto;
+    width: 500px;
+    padding: 20px;
+    font-size: 30px;
+    letter-spacing: 10px;
+    color: #FFFFFF;
+    text-align: center;
+    border-top: 3px solid #d56f22;
+    border-bottom: 3px solid #d56f22;
+    border-radius: 10px;
+}
+
+.contextmenu {
+    display: none;
+    position: absolute;
+    width: 200px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 99;
+}
+
+.contextmenu li {
+    border-left: 3px solid transparent;
+    transition: ease 0.3s;
+}
+
+.contextmenu li:hover {
+    background: #CE93D8;
+    border-left: 3px solid #9C27B0;
+}
+
+.contextmenu li a {
+    display: block;
+    padding: 10px;
+    color: #000000;
+    text-decoration: none;
+    transition: ease 0.3s;
+}
+
+.contextmenu li:hover a {
+    color: #FF0000;
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>控制台页面_轮胎温度监测系统</title>
+    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
+    <!--<link rel="stylesheet" href="layui/layui/css/layui.css" media="all" />-->
+
+
+
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/plugins/excanvas.min.js"></script><![endif]-->
+    <!--[if IE 9]>
+    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
+    <![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/plugins/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+
+<body class="withvernav">
+<div class="bodywrapper">
+    <div class="topheader">
+        <div class="left">
+            <h1 class="logo">轮胎温度监测系统</h1>
+            <span class="slogan">后台管理系统</span>
+
+            <div class="search">
+                <form action="" method="post">
+                    <input type="text" name="keyword" id="keyword" value="请输入" />
+                    <button class="submitbutton"></button>
+                </form>
+            </div><!--search-->
+
+            <br clear="all" />
+
+        </div><!--left-->
+
+        <div class="right">
+            <!--<div class="notification">
+                <a class="count" href="ajax/notifications.html"><span>9</span></a>
+            </div>-->
+            <div class="userinfo">
+                <img src="images/thumbs/avatar.png" alt="" />
+                <span>管理员</span>
+            </div><!--userinfo-->
+
+            <div class="userinfodrop">
+                <div class="avatar">
+                    <a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
+                    <div class="changetheme">
+                        切换主题: <br />
+                        <a class="default"></a>
+                        <a class="blueline"></a>
+                        <a class="greenline"></a>
+                        <a class="contrast"></a>
+                        <a class="custombg"></a>
+                    </div>
+                </div><!--avatar-->
+                <div class="userdata">
+                    <h4>Juan</h4>
+                    <span class="email">youremail@yourdomain.com</span>
+                    <ul>
+                        <li><a href="editprofile.html">编辑资料</a></li>
+                        <li><a href="accountsettings.html">账号设置</a></li>
+                        <li><a href="help.html">帮助</a></li>
+                        <li><a href="index.html">退出</a></li>
+                    </ul>
+                </div><!--userdata-->
+            </div><!--userinfodrop-->
+        </div><!--right-->
+    </div><!--topheader-->
+
+
+    <div class="vernav2 iconmenu">
+        <ul class="menu">
+            <li class="level1">
+                <a href="dashboard.html" class="editor">首页</a>
+            </li>
+            <li class="level1">
+                <a href="#monitor" class="monitor">系统检测</a>
+                <span class="arrow"></span>
+                <ul id="monitor" class="level2">
+                    <li>
+                        <a href="#room">实时监测</a>
+                        <span class="arrow"></span>
+                        <ul id="room" class="level3">
+                            <li><a href="#">1#机床</a></li>
+                            <li><a href="#">2#机床</a></li>
+                            <li><a href="#">3#机床</a></li>
+                            <li><a href="#">4#机床</a></li>
+                            <li><a href="#">5#机床</a></li>
+                            <li><a href="#">6#机床</a></li>
+                            <li><a href="#">7#机床</a></li>
+                            <li><a href="#">8#机床</a></li>
+                            <li><a href="#">9#机床</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="historysearch.html" target="_blank">历史查询</a></li>
+                    <li><a href="datacompare.html" target="_blank">数据对比</a></li>
+                </ul>
+            </li>
+            <!--<li><a href="filemanager.html" class="gallery">文件管理</a></li>-->
+            <li class="level1">
+                <a href="#manage" class="addons">用户管理</a>
+                <span class="arrow"></span>
+                <ul id="manage" class="level2">
+                    <li><a href="#">用户信息</a></li>
+                    <li><a href="#">用户管理</a></li>
+                </ul>
+            </li>
+        </ul>
+        <a class="togglemenu"></a>
+        <br /><br />
+    </div><!--leftmenu-->
+
+    <div class="centercontent">
+
+        <div class="pageheader">
+            <h1 class="pagetitle">控制台</h1><span class="pagedesc" >本页面用于对<span id="pagedesc">7#机床</span>进行轮胎温度监测控制功能。</span>
+
+            <ul class="hornav">
+                <li class="current"><a href="#updates">监测控制</a></li>
+            </ul>
+        </div><!--pageheader-->
+
+        <div id="contentwrapper" class="contentwrapper">
+
+            <div id="updates" class="subcontent" >
+
+                <div class="one_half dashboard_left" id="left-panel">
+                    <br clear="all" />
+                    <div class="contenttitle2 nomargintop">
+                        <h3>监测信息</h3>
+                    </div><!--contenttitle-->
+                    <button class="overviewbutton" id="about" style="float: right">点击悬浮监控视窗</button>
+                    <div class="overviewhead1">
+                        <div class="overviewleft1">
+
+                            <table cellpadding="0" cellspacing="0" border="0" class="stdtable overviewtable1">
+                                <colgroup>
+                                    <col class="con1" width="50%" />
+                                    <col class="con1" width="50%" />
+                                </colgroup>
+                                <tbody>
+                                <tr ><td  colspan="2"><span>机床号:</span> <input id="roomnumber" type="text" class="hasinput" value="7"/></td>
+                                </tr>
+                                <tr><td><div ><input name="chkRadio1" id="chkRadio1" type="radio" class="rdo" onclick="chkRadio1(this)"/>1号工位</div></td>
+                                    <td><input name="chkRadio2" id="chkRadio2" type="radio" class="rdo" onclick="chkRadio2(this)"/>2号工位</td>
+                                </tr>
+                                <tr>
+                                    <td ><div class="overviewleft1">
+                                        <ul>
+                                            <li><span>轮胎工号: </span><input id="tire_number1" type="text" name="tire_number1"  placeholder="必填"/></li>
+                                            <li><span>规格: </span><input id="sample_specification1" type="text" name="sample_specification1" placeholder="必填"/></li>
+                                            <li><span>负荷指数: </span><input id="sample_load_rode1" type="text" name="sample_load_rode1" placeholder="必填"/></li>
+                                            <!--<li><span>实验报告名称:</span> <input id="sample_reporter_name1" type="text"  name="sample_reporter_name1" /></li>-->
+                                            <li><span>试制编号: </span><input id="sample_number1" type="text" name="sample_number1"  placeholder="选填" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')"/> </li>
+                                            <li><span>试验日期: </span><input id="sample_test_date1" type="text" name="sample_test_date1"  placeholder="2019-01-01"/></li>
+                                            <!--<li><span>送检单位: </span><input id="sample_inspection_unit1" type="text" name="sample_inspection_unit1" /></li>-->
+                                            <!--<li><span>生产编号: </span><input id="sample_production_number1" type="text" name="sample_production_number1" /></li>-->
+                                            <!--<li><span>轮胎名义半径: </span><input id="sample_tire_radius1" type="text" name="sample_tire_radius1"  /></li>-->
+                                            <!--<li style="width:200px"><span style="width:125px;">滚动阻力转鼓直径换算: </span><input id="sample_conversion1" type="text" name="sample_conversion1"  /></li>-->
+                                            <li><span>品牌: </span><input id="sample_brand1" type="text" name="sample_brand1" placeholder="必填"/></li>
+                                            <li><span>层级: </span><input id="sample_level1" type="text" name="sample_level1" placeholder="必填"/></li>
+                                            <li><span>花纹: </span><input id="sample_pattern1" type="text" name="sample_pattern1" placeholder="必填"/></li>
+                                            <li><span>送样人: </span><input id="sample_person1" type="text" name="sample_person1" placeholder="必填"/></li>
+                                            <li><span>方案: </span><input id="sample_scheme1" type="text" name="sample_scheme1" placeholder="选填" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" /></li>
+                                            <li><span>项目名称: </span><input id="sample_object_name1" type="text" name="sample_object_name1" placeholder="选填" /></li>
+                                        </ul>
+                                    </div></td>
+                                    <td ><div class="overviewleft1">
+                                        <ul>
+                                            <li><span>轮胎工号: </span><input id="tire_number2" type="text" name="tire_number2" placeholder="必填"/></li>
+                                            <li><span>规格: </span><input id="sample_specification2" type="text" name="sample_specification2" placeholder="必填"/></li>
+                                            <li><span>负荷指数: </span><input id="sample_load_rode2" type="text" name="sample_load_rode2" placeholder="必填"/></li>
+                                            <!--<li><span>实验报告名称:</span> <input id="sample_reporter_name2" type="text"  name="sample_reporter_name2"/></li>-->
+                                            <li><span>试制编号: </span><input id="sample_number2" type="text" name="sample_number2" placeholder="选填" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')"/> </li>
+                                            <li><span>试验日期: </span><input id="sample_test_date2"  type="text" name="sample_test_date2" placeholder="2019-01-01"/></li>
+                                            <!--<li><span>送检单位: </span><input id="sample_inspection_unit2" type="text" name="sample_inspection_unit2"/></li>-->
+                                            <!--<li><span>生产编号: </span><input id="sample_production_number2" type="text" name="sample_production_number2"/></li>-->
+                                            <!--<li><span>轮胎名义半径: </span><input id="sample_tire_radius2" type="text" name="sample_tire_radius2" /></li>-->
+                                            <!--<li style="width:200px"><span style="width:125px;">滚动阻力转鼓直径换算: </span><input id="sample_conversion2" type="text" name="sample_conversion2" /></li>-->
+                                            <li><span>品牌: </span><input id="sample_brand2" type="text" name="sample_brand2" placeholder="必填"/></li>
+                                            <li><span>层级: </span><input id="sample_level2" type="text" name="sample_level2" placeholder="必填"/></li>
+                                            <li><span>花纹: </span><input id="sample_pattern2" type="text" name="sample_pattern2" placeholder="必填"/></li>
+                                            <li><span>送样人: </span><input id="sample_person2" type="text" name="sample_person2" placeholder="必填"/></li>
+                                            <li><span>方案: </span><input id="sample_scheme2" type="text" name="sample_scheme2" placeholder="选填" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')"/></li>
+                                            <li><span>项目名称: </span><input id="sample_object_name2" type="text" name="sample_object_name2" placeholder="选填" /></li>
+                                        </ul>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><div class="overviewleft1">
+                                        <ul>
+                                            <li style="width:275px"><span style="width:125px;">第一次取点频率: </span><input id="first_point_frequency" type="text"  style="width:135px;" name="first_point_frequency" placeholder="【必填】请输入分钟（m）"/></li>
+                                            <li style="width:275px"><span style="width:125px;">第一次时间间隔: </span><input id="first_time_interval" type="text" style="width:135px" name="first_time_interval" placeholder="【必填】请输入小时（h）"/></li>
+                                            <li style="width:275px"><span style="width:125px;">第二次取点频率: </span><input id="second_point_frequency" type="text" style="width:135px" name="second_point_frequency" placeholder="【必填】请输入分钟（m）"/> </li>
+                                            <li style="width:275px"><span style="width:125px;">第二次时间间隔: </span><input id="second_time_interval" type="text" style="width:135px" name="second_time_interval" placeholder="【必填】请输入小时（h）"/></li>
+                                            <li style="width:275px"><span style="width:125px;">第三次取点频率: </span><input id="third_point_frequency" type="text" style="width:135px" name="third_point_frequency" placeholder="【必填】请输入分钟（m）"/></li>
+                                        </ul>
+                                    </div></td>
+                                </tr>
+                                <tr><td colspan="2">
+                                    <div  colspan="2">
+                                            <div class="overviewbutton"><a href="#" id="startRecord" onclick="controlRealTempMeas()"> 开始检测</a>&nbsp;&nbsp;
+                                                <a href="#" id="stopInsTemp" onclick="stopInsertRealTemp()">结束试验</a>&nbsp;&nbsp;
+                                                <a href="JavaScript:downloadFile()" id="downloadFile">下载报表</a>
+                                                <!--<a href="#" id="DrawFigure">绘制曲线</a>&nbsp;&nbsp;-->
+                                                <!--<a href="#" id="generateExcelReport" onclick="generateExcelReport()" >生成报表</a>&nbsp;&nbsp;-->
+                                                <!--<a href="#" id="saveImage" name="saveImage">保存图片</a>-->
+                                                &nbsp;<label id="showBtnContent" class="showBtnContent"></label>
+                                            </div>
+                                    </div></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!--<div class="overviewright">-->
+
+                    </div><!--overviewhead-->
+
+
+                    <br clear="all" />
+
+                </div><!--two_third dashboard_left -->
+
+                <div class="one_half last  dashboard_right">
+                    <div class="widgetbox">
+                        <div class="title"><h3>视频显示区域</h3></div>
+                        <div id="divPlugin" class="divPlugin"> </div>
+                    </div>
+                </div>
+
+                <br clear="all">
+               <!--<div class="one_half dashboard_left">-->
+                   <div class="five_seventh">
+                    <br clear="all" />
+                       <div style="width:93%;">
+                           <div class="contenttitle2 nomargintop" style="display:inline-block;">
+                               <h3 >1号工位</h3>
+                           </div>
+                           <div style="display: inline-block;float: right;">
+                               <h4 class=" nomargintop" style="display: inline-block">折线图刷新率</h4>
+                               <select id="refresh_rate" style="font-size: 18px">
+                                   <option id="thirty-time" value ="thirty">30分钟/次</option>
+                                   <option id="ten-time" value ="ten">10分钟/次</option>
+                                   <option id="five-time" value="five">5分钟/次</option>
+                                   <option id="one-time" value="one">1分钟/次</option>
+                               </select>
+
+                           </div>
+
+
+                       </div>
+
+
+                    <div id="chartplace1" style="height:400px; "></div>
+                </div>
+
+                <!--<div class="one_half last  dashboard_right">-->
+                    <div class="five_seventh">
+                    <br clear="all" />
+                    <div class="contenttitle2 nomargintop">
+                        <h3>2号工位</h3>
+                    </div>
+                    <div id="chartplace2" style="height:400px; "></div>
+                </div><!--two_third last-->
+
+
+
+                <br clear="all" />
+
+            </div><!-- #updates -->
+
+            <div id="activities" class="subcontent" style="display: none;">
+            </div><!-- #activities -->
+
+        </div><!--contentwrapper-->
+
+        <br clear="all" />
+
+    </div><!-- centercontent -->
+
+
+</div><!--bodywrapper-->
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="layui-out/layer/layer.js"></script>
+
+
+<script src="laydate/laydate.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/video/demo.js"></script>
+<script type="text/javascript" id="videonode" src="js/video/webVideoCtrl.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="js/custom/general.js"></script>
+<script type="text/javascript" src="js/custom/dashboard.js"></script>
+<script type="text/javascript" src="js/highcharts/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts/series-label.js"></script>
+<script type="text/javascript" src="js/highcharts/exporting.js"></script>
+
+<script>
+    window.onload=function(){
+        clickToLogout();     //登出
+        showCamInfo($("#roomnumber").val());   //连接数据库，获取当前房间所有信息
+        getCurrentRoomdata($("#roomnumber").val())
+        clickToLogin();    //登录
+
+
+
+
+
+    }
+    laydate.render({
+        elem: '#sample_test_date2' //指定元素
+        ,zIndex: 99999999
+    });
+    laydate.render({
+      elem:'#sample_test_date1'
+        ,zIndex: 99999999
+    });
+    $('#about').on('click', function(){
+        document.getElementById('divPlugin').style.display='block';
+        $('#left-panel').removeClass('one_half');
+        layer.open({
+            type: 1,
+            title :'视频显示区域',
+
+            shadeClose:false, //点击遮罩关闭层
+            area : ['520px' , '600px'],
+            content: $('#divPlugin'),
+            btn: ['还原显示'],
+            yes:function(index){
+                $('#left-panel').addClass('one_half');
+                document.getElementById('about').innerHTML='点击悬浮监控视窗';
+                layer.close(index);
+            },
+            cancel: function(index){
+                document.getElementById('divPlugin').style.display='none';
+                document.getElementById('about').innerHTML='查看监控悬浮视窗';
+                layer.close(index)
+            }
+
+        });
+    });
+</script>
+<script>
+
+
+
+
+
+
+</script>
+</html>
+
+
+

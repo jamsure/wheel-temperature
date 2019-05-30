@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
+<mapper namespace="chaoyang.tempmonitor.mapper.PointMapper">
+
+    <!-- insert pointinfo -->
+    <insert id = "insert" parameterType="chaoyang.tempmonitor.model.PointInfo">
+        INSERT INTO POINT_INFO(tire_number,sample_type,sample_type_number,point_type_index,point_x,point_y,cam_station_number) VALUES(#{tire_number},#{sample_type},#{sample_type_number},#{point_type_index},#{point_x},#{point_y},#{cam_station_number});
+    </insert>
+
+    <!-- update user -->
+    <update id="update" parameterType="chaoyang.tempmonitor.model.User">
+        UPDATE USER_INFO SET name=#{username} , password=#{password} WHERE ID=#{id}
+    </update>
+
+    <!-- find user -->
+    <select id="find" parameterType="int" resultType="chaoyang.tempmonitor.model.User">
+        SELECT id,name,password FROM USER_INFO WHERE ID=#{id}
+    </select>
+
+    <!-- delete user -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM POINT_INFO WHERE sample_id=#{sample_id};
+    </delete>
+</mapper>

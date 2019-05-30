@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>控制台页面_轮胎温度监测系统</title>
+    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
+
+
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/plugins/excanvas.min.js"></script><![endif]-->
+    <!--[if IE 9]>
+    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
+    <![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/plugins/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+
+<body class="withvernav">
+<div class="bodywrapper">
+    <div class="topheader">
+        <div class="left">
+            <h1 class="logo">轮胎温度监测系统</h1>
+            <span class="slogan">后台管理系统</span>
+
+            <div class="search">
+                <form action="" method="post">
+                    <input type="text" name="keyword" id="keyword" value="请输入" />
+                    <button class="submitbutton"></button>
+                </form>
+            </div><!--search-->
+
+            <br clear="all" />
+
+        </div><!--left-->
+
+        <div class="right">
+            <!--<div class="notification">
+                <a class="count" href="ajax/notifications.html"><span>9</span></a>
+            </div>-->
+            <div class="userinfo">
+                <img src="images/thumbs/avatar.png" alt="" />
+                <span>管理员</span>
+            </div><!--userinfo-->
+
+            <div class="userinfodrop">
+                <div class="avatar">
+                    <a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
+                    <div class="changetheme">
+                        切换主题: <br />
+                        <a class="default"></a>
+                        <a class="blueline"></a>
+                        <a class="greenline"></a>
+                        <a class="contrast"></a>
+                        <a class="custombg"></a>
+                    </div>
+                </div><!--avatar-->
+                <div class="userdata">
+                    <h4>Juan</h4>
+                    <span class="email">youremail@yourdomain.com</span>
+                    <ul>
+                        <li><a href="editprofile.html">编辑资料</a></li>
+                        <li><a href="accountsettings.html">账号设置</a></li>
+                        <li><a href="help.html">帮助</a></li>
+                        <li><a href="index.html">退出</a></li>
+                    </ul>
+                </div><!--userdata-->
+            </div><!--userinfodrop-->
+        </div><!--right-->
+    </div><!--topheader-->
+
+
+    <div class="vernav2 iconmenu">
+        <ul class="menu">
+            <li class="level1">
+                <a href="#monitor" class="monitor">系统检测</a>
+                <span class="arrow"></span>
+                <ul id="monitor" class="level2">
+                    <li>
+                        <a href="#room">实时监测</a>
+                        <span class="arrow"></span>
+                        <ul id="room" class="level3">
+                            <li><a href="#">房间1</a></li>
+                            <li><a href="#">房间2</a></li>
+                            <li><a href="#">房间3</a></li>
+                            <li><a href="#">房间4</a></li>
+                            <li><a href="#">房间5</a></li>
+                            <li><a href="#">房间6</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="historysearch3.html">历史查询</a></li>
+                    <li><a href="datacomparemm.html">数据对比</a></li>
+                </ul>
+            </li>
+            <!--<li><a href="filemanager.html" class="gallery">文件管理</a></li>-->
+            <li class="level1">
+                <a href="#manage" class="addons">用户管理</a>
+                <span class="arrow"></span>
+                <ul id="manage" class="level2">
+                    <li><a href="#">用户信息</a></li>
+                    <li><a href="#">用户管理</a></li>
+                </ul>
+            </li>
+        </ul>
+        <a class="togglemenu"></a>
+        <br /><br />
+    </div><!--leftmenu-->
+
+    <div class="centercontent">
+
+        <div class="pageheader">
+            <h1 class="pagetitle">控制台</h1><span class="pagedesc" >本页面用于对<span id="pagedesc">房间</span>进行轮胎温度监测控制功能。</span>
+
+            <ul class="hornav">
+                <li class="current"><a href="#updates">监测控制</a></li>
+            </ul>
+        </div><!--pageheader-->
+
+        <div id="contentwrapper" class="contentwrapper">
+
+            <div id="updates" class="subcontent">
+
+                <div class="one_half dashboard_left">
+                    <br clear="all" />
+                    <div class="contenttitle2 nomargintop">
+                        <h3>监测信息</h3>
+                    </div><!--contenttitle-->
+                    <div class="overviewhead">
+                        <div>
+                            <tr>
+                            <label><input type="radio" id="cam_station_number1" name="cam_station_number1" onclick="chkRadio1(this)"/>仓位号1</label>
+                            <label><input type="radio" id="cam_station_number2" name="cam_station_number2"  onclick="chkRadio2(this)"/>仓位号2</label>
+                            </tr>
+                        </div>
+                        <div class="overviewleft">
+                            <ul>
+                                <li><span>房间号:</span> <input id="roomnumber" type="text" name="roomnumber" class="hasinput" /> </li>
+                                <li><span>轮胎编号: </span><input id="tire_number1" type="text" name="tire_number1" class="hasinput" /></li>
+                                <li><span>实验轮胎规格: </span><input id="sample_tyre_standard1" type="text" name="sample_tyre_standard1" class="hasinput" /></li>
+                                <li><span>负荷指数: </span><input id="sample_load_rode1" type="text" name="sample_load_rode1" class="hasinput" /></li>
+                                <li><span>实验报告名称:</span> <input id="sample_reporter_name1" type="text"  name="sample_reporter_name1" class="hasinput"/></li>
+                                <li><span>实验编号: </span><input id="sample_number1" type="text" name="sample_number1" class="hasinput" /> </li>
+                                <li><span>实验日期: </span><input id="sample_test_date1" type="text" name="sample_test_date1" class="hasinput" /></li>
+                                <li><span>送检单位: </span><input id="sample_inspection_unit1" type="text" name="sample_inspection_unit1" class="hasinput" /></li>
+                                <li><span>生产编号: </span><input id="sample_production_number1" type="text" name="sample_production_number1" class="hasinput" /></li>
+                                <li><span>轮胎名义半径: </span><input id="sample_tire_radius1" type="text" name="sample_tire_radius1" class="hasinput"  /></li>
+                                <li><span>滚动阻力转鼓直径换算: </span><input id="sample_conversion1" type="text" name="sample_conversion1" class="hasinput" /></li>
+                            </ul>
+                            <ul>
+                                <li><span>轮胎编号: </span><input id="tire_number2" type="text" name="tire_number2" class="hasinput" /></li>
+                                <li><span>实验轮胎规格: </span><input id="sample_tyre_standard2" type="text" name="sample_tyre_standard2" class="hasinput" /></li>
+                                <li><span>负荷指数: </span><input id="sample_load_rode2" type="text" name="sample_load_rode2" class="hasinput" /></li>
+                                <li><span>实验报告名称:</span> <input id="sample_reporter_name2" type="text"  name="sample_reporter_name2" class="hasinput"/></li>
+                                <li><span>实验编号: </span><input id="sample_number2" type="text" name="sample_number2" class="hasinput" /> </li>
+                                <li><span>实验日期: </span><input id="sample_test_date2" type="text" name="sample_test_date2" class="hasinput" /></li>
+                                <li><span>送检单位: </span><input id="sample_inspection_unit2" type="text" name="sample_inspection_unit2" class="hasinput" /></li>
+                                <li><span>生产编号: </span><input id="sample_production_number2" type="text" name="sample_production_number2" class="hasinput" /></li>
+                                <li><span>轮胎名义半径: </span><input id="sample_tire_radius2" type="text" name="sample_tire_radius2" class="hasinput"  /></li>
+                                <li><span>滚动阻力转鼓直径换算: </span><input id="sample_conversion2" type="text" name="sample_conversion2" class="hasinput" /></li>
+                                <li><div class="overviewbutton"><a href="#" onclick="controlRealTempMeas()" id="startRecord">开始搜索</a>&nbsp;&nbsp;<a href="#" onclick="stopInsertRealTemp()">停止搜索</a><a href="#" id="DrawFigure">绘制曲线</a></div></li>
+                            </ul>
+                        </div>
+
+                        <div class="clearfloat"></div>
+                    </div><!--overviewhead-->
+
+                    <!--<div style="margin-top: 30px;"><table cellpadding="0" cellspacing="0" border="0" class="stdtable overviewtable">-->
+                        <!--<colgroup>-->
+                            <!--<col class="con0" width="20%" />-->
+                            <!--<col class="con1" width="20%" />-->
+                            <!--<col class="con0" width="20%" />-->
+                            <!--<col class="con1" width="20%" />-->
+                            <!--<col class="con0" width="20%" />-->
+                        <!--</colgroup>-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                            <!--<th class="head0">角度</th>-->
+                            <!--<th class="head1">平均温度</th>-->
+                            <!--<th class="head0">最高温度</th>-->
+                            <!--<th class="head1">最低温度</th>-->
+                            <!--&lt;!&ndash;<th class="head0">检测时间 (h)</th>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr>-->
+                            <!--<td><font size = "3">左侧</font></td>-->
+                            <!--<td id="maxTempL"><font size="3" ></font> </td>-->
+                            <!--<td id="minTempL"><font size = "3" ></font></td>-->
+                            <!--<td class="center" id="aveTempL"><font size = "3" ></font></td>-->
+                            <!--&lt;!&ndash;<td class="center"><font size = "3">7</font></td>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td><font size = "3">中间</font></td>-->
+                            <!--<td id="maxTempM"><font size = "3" ></font></td>-->
+                            <!--<td id="minTempM"><font size = "3" ></font></td>-->
+                            <!--<td class="center" id="maveTempM"><font size = "3"></font></td>-->
+                            <!--&lt;!&ndash;<td class="center"><font size = "3">6</font></td>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td><font size = "3">右侧</font></td>-->
+                            <!--<td id="maxTempR"><font size = "3" ></font></td>-->
+                            <!--<td id="minTempR"><font size = "3" ></font></td>-->
+                            <!--<td class="center" id="aveTempR"><font size = "3"></font></td>-->
+                            <!--&lt;!&ndash;<td class="center"><font size = "3">11</font></td>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table></div>-->
+
+                </div><!--two_third dashboard_left -->
+
+                <div class="one_half last dashboard_right">
+
+                    <div class="widgetbox">
+                        <div class="title"><h3>视频显示区域</h3></div>
+                        <div id="divPlugin" class="plugin"> </div>
+                       <!-- <div class="widgetoptions">
+
+                            <a href="javascript:void(0);" onclick="clickToLogin()">开始预览</a>&nbsp;&nbsp;
+                            <a href="javascript:void(0);" onclick="clickToStopRealPlay()">停止预览</a>
+                            <!--<table> <tr>-->
+                                <!--<td class="tt">IP地址</td>-->
+                                <!--<td><input id="lo ginip" type="text" class="txt" value="10.12.41.21" /></td>-->
+                                <!--<td class="tt">端口号</td>-->
+                                <!--<td><input id="port" type="text" class="txt" value="80"  /></td>-->
+                            <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td class="tt">用户名</td>-->
+                                    <!--<td><input id="username" type="text" class="txt" value="admin" /></td>-->
+                                    <!--<td class="tt">密码</td>-->
+                                    <!--<td><input id="password" type="password" class="txt"  value="abcd1234"/></td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td colspan="4">-->
+                                        <!--<input type="button" class="btn" value="登录" onclick="clickLogin();" />-->
+                                        <!--<input type="button" class="btn" value="退出" onclick="clickLogout();" />-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td class="tt">已登录设备</td>-->
+                                    <!--<td>-->
+                                        <!--<select id="ip" class="sel" onchange="getChannelInfo();getDevicePort();"></select>-->
+                                    <!--</td>-->
+                                    <!--<td class="tt">通道列表</td>-->
+                                    <!--<td>-->
+                                        <!--<select id="channels" class="sel"></select>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+                        </div>-->
+
+                        <!-- <div class="widgetcontent userlistwidget nopadding">-->
+                        <!-- <table cellpadding="0" cellspacing="0" border="0" class="stdtable widgetable">
+                             <colgroup>
+                                 <col class="con0" width="20%" />
+                                 <col class="con1" width="20%" />
+                                 <col class="con0" width="20%" />
+                                 <col class="con1" width="20%" />
+                                 <col class="con0" width="20%" />
+                             </colgroup>
+                             <tbody valign="top" align="center" >
+                             <tr valign="top">
+                                 <td valign="top" ><font size="3">中间</font> </td>
+                                 <td valign="top" ><font size="3">左侧</font> </td>
+                             </tr>
+                             <tr>
+                                 <td valign="top" ><font size="3">右侧</font> </td>
+                                 <td></td>
+                             </tr>
+                             </tbody>
+                         </table>-->
+
+                    </div><!--widgetcontent-->
+                </div><!--one_third last-->
+
+                <br clear="all" />
+
+                <div id="chartplace" style="height:410px; padding: 0px; position: relative;"></div>
+
+                <br clear="all" />
+
+            </div><!-- #updates -->
+
+            <div id="activities" class="subcontent" style="display: none;">
+                &nbsp;
+            </div><!-- #activities -->
+
+        </div><!--contentwrapper-->
+
+        <br clear="all" />
+
+    </div><!-- centercontent -->
+
+
+</div><!--bodywrapper-->
+
+
+</body>
+<script type="text/javascript" src="js/plugins/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/video/demo.js"></script>
+<script type="text/javascript" id="videonode" src="js/video/webVideoCtrl.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="js/custom/general.js"></script>
+<script type="text/javascript" src="js/custom/dashboard.js"></script>
+</html>

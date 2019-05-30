@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
+<mapper namespace="chaoyang.tempmonitor.mapper.ReportExcelMapper">
+
+    <!-- find exceltempinfo user -->
+    <select id="getReportExcelTemp" parameterType="chaoyang.tempmonitor.model.SampleInfo" resultType="chaoyang.tempmonitor.model.PointTempInfo">
+        <bind name="fStartTime" value="sample_test_date +'%'" />
+      SELECT plp.sample_type_number AS sample_type_number, MAX(plp.plp_fMaxTemperature) AS plp_fMaxTemperature from plp_temp_info as plp
+        WHERE plp.cam_ip in (SELECT ri.cam_ip FROM room_info AS ri WHERE ri.room_number=#{room_number})
+        AND plp.cam_station_number=#{cam_station_number}
+        AND plp.cam_ip=#{cam_ip}
+        AND plp.tire_number=#{tire_number}
+        AND plp.plp_fixStartTime LIKE #{fStartTime}
+        GROUP BY plp.sample_type_number;
+    </select>
+
+    <select id="getReportExcelSurf" parameterType="chaoyang.tempmonitor.model.SampleInfo" resultType="java.lang.Float">
+        <bind name="fStartTime" value="sample_test_date +'%'" />
+        SELECT MAX(plp.plp_fMaxTemperature) AS plp_fMaxTemperature from plp_temp_info as plp
+        LEFT JOIN
+        room_info ri
+        ON
+        plp.cam_ip = ri.cam_ip
+        WHERE plp.cam_station_number=#{cam_station_number}
+        AND plp.cam_ip=#{cam_ip}
+        AND plp.tire_number=#{tire_number}
+        AND plp.plp_fixStartTime LIKE #{fStartTime}
+        AND plp.sample_type_number = 1
+        AND ri.room_number = #{room_number}
+    </select>
+
+
+    <!-- find exceltempinfo user -->
+    <select id="getHighestTemp" parameterType="chaoyang.tempmonitor.model.SampleInfo" resultType="chaoyang.tempmonitor.model.StartTimeAndTimeDiff">
+        <bind name="fStartTime" value="sample_test_date +'%'" />
+        SELECT plp.plp_photo_position, plp.plp_fixStartTime AS plp_fixStartTime, plp.plp_timeDiff AS plp_timeDiff, plp.plp_fMaxTemperature AS plp_fMaxTemperature from plp_temp_info as plp
+        WHERE plp.cam_ip in (SELECT ri.cam_ip FROM room_info AS ri WHERE ri.room_number=#{room_number})
+        AND plp.cam_station_number=#{cam_station_number}
+        AND plp.cam_ip=#{cam_ip}
+        AND plp.tire_number=#{tire_number}
+        AND plp.plp_fixStartTime LIKE #{fStartTime}
+        ORDER BY plp.plp_fMaxTemperature DESC LIMIT 1
+    </select>
+
+    <!-- find exceltempinfo user -->
+    <select id="getNineFiveTime" parameterType="chaoyang.tempmonitor.model.SampleInfo" resultType="java.lang.String">
+        <bind name="fStartTime" value="sample_test_date +'%'" />
+        SELECT plp.plp_timeDiff AS plp_timeDiff from plp_temp_info as plp
+        WHERE plp.cam_ip in (SELECT ri.cam_ip FROM room_info AS ri WHERE ri.room_number=#{room_number})
+        AND plp.cam_station_number=#{cam_station_number}
+        AND plp.cam_ip=#{cam_ip}
+        AND plp.tire_number=#{tire_number}
+        AND plp.plp_fixStartTime LIKE #{fStartTime}
+        AND plp_fMaxTemperature>=95
+        ORDER BY plp_timeDiff ASC LIMIT 1;
+    </select>
+
+    <!-- find room_info -->
+    <select id="getCam_ip_position" parameterType="java.util.Map" resultType="chaoyang.tempmonitor.model.Room">
+        SELECT cam_position,cam_ip FROM ROOM_INFO WHERE room_number=#{room_number} AND cam_station_number = #{cam_station_number}
+    </select>
+
+</mapper>

@@ -1,0 +1,549 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>控制台页面_轮胎温度监测系统</title>
+    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
+    <link rel="stylesheet" href="layui/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="layui/css/font_eolqem241z66flxr.css" media="all" />
+    <link rel="stylesheet" href="layui/css/main.css" media="all" />
+    <link rel="stylesheet" href="layui/css/news.css" media="all" />
+
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/plugins/excanvas.min.js"></script><![endif]-->
+    <!--[if IE 9]>
+    <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
+    <![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/plugins/css3-mediaqueries.js"></script>
+
+    <![endif]-->
+</head>
+
+<body class="withvernav">
+
+<div class="bodywrapper">
+    <!--<div class="topheader1">-->
+        <!--<div class="left">-->
+            <!--<h1 class="logo">轮胎温度监测系统</h1>-->
+            <!--<span class="slogan">后台管理系统</span>-->
+
+            <!--<div class="search">-->
+                <!--<form action="" method="post">-->
+                    <!--<input type="text" name="keyword" id="keyword" value="请输入" />-->
+                    <!--<button class="submitbutton"></button>-->
+                <!--</form>-->
+            <!--</div>&lt;!&ndash;search&ndash;&gt;-->
+
+            <!--<br clear="all" />-->
+
+        <!--</div>&lt;!&ndash;left&ndash;&gt;-->
+
+        <!--<div class="right">-->
+            <!--&lt;!&ndash;<div class="notification">-->
+                <!--<a class="count" href="ajax/notifications.html"><span>9</span></a>-->
+            <!--</div>&ndash;&gt;-->
+            <!--<div class="userinfo">-->
+                <!--<img src="images/thumbs/avatar.png" alt="" />-->
+                <!--<span>管理员</span>-->
+            <!--</div>&lt;!&ndash;userinfo&ndash;&gt;-->
+
+            <!--<div class="userinfodrop">-->
+                <!--<div class="avatar">-->
+                    <!--<a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>-->
+                    <!--<div class="changetheme">-->
+                        <!--切换主题: <br />-->
+                        <!--<a class="default"></a>-->
+                        <!--<a class="blueline"></a>-->
+                        <!--<a class="greenline"></a>-->
+                        <!--<a class="contrast"></a>-->
+                        <!--<a class="custombg"></a>-->
+                    <!--</div>-->
+                <!--</div>&lt;!&ndash;avatar&ndash;&gt;-->
+                <!--<div class="userdata">-->
+                    <!--<h4>Juan</h4>-->
+                    <!--<span class="email">youremail@yourdomain.com</span>-->
+                    <!--<ul>-->
+                        <!--<li><a href="editprofile.html">编辑资料</a></li>-->
+                        <!--<li><a href="accountsettings.html">账号设置</a></li>-->
+                        <!--<li><a href="help.html">帮助</a></li>-->
+                        <!--<li><a href="index.html">退出</a></li>-->
+                    <!--</ul>-->
+                <!--</div>&lt;!&ndash;userdata&ndash;&gt;-->
+            <!--</div>&lt;!&ndash;userinfodrop&ndash;&gt;-->
+        <!--</div>&lt;!&ndash;right&ndash;&gt;-->
+    <!--</div>&lt;!&ndash;topheader&ndash;&gt;-->
+    <div class="topheader">
+        <div class="left">
+            <h1 class="logo">轮胎温度监测系统</h1>
+            <span class="slogan">后台管理系统</span>
+
+            <div class="search">
+                <form action="" method="post">
+                    <input type="text" name="keyword" id="keyword" value="请输入" />
+                    <button class="submitbutton"></button>
+                </form>
+            </div><!--search-->
+
+            <br clear="all" />
+
+        </div><!--left-->
+        <div class="right">
+            <!--<div class="notification">
+                <a class="count" href="ajax/notifications.html"><span>9</span></a>
+            </div>-->
+            <div class="userinfo">
+                <img src="images/thumbs/avatar.png" alt="" />
+                <span>管理员</span>
+            </div><!--userinfo-->
+
+            <div class="userinfodrop">
+                <div class="avatar">
+                    <a href=""><img src="images/thumbs/avatarbig.png" alt="" /></a>
+                    <div class="changetheme">
+                        切换主题: <br />
+                        <a class="default"></a>
+                        <a class="blueline"></a>
+                        <a class="greenline"></a>
+                        <a class="contrast"></a>
+                        <a class="custombg"></a>
+                    </div>
+                </div><!--avatar-->
+                <div class="userdata">
+                    <h4>Juan</h4>
+                    <span class="email">youremail@yourdomain.com</span>
+                    <ul>
+                        <li><a href="editprofile.html">编辑资料</a></li>
+                        <li><a href="accountsettings.html">账号设置</a></li>
+                        <li><a href="help.html">帮助</a></li>
+                        <li><a href="index.html">退出</a></li>
+                    </ul>
+                </div><!--userdata-->
+            </div><!--userinfodrop-->
+        </div><!--right-->
+    </div><!--topheader-->
+
+
+    <div class="vernav2 iconmenu">
+        <ul class="menu">
+            <li class="level1">
+                <a href="#" class="editor">首页</a>
+            </li>
+            <li class="level1">
+                <a href="#monitor" class="monitor">系统检测</a>
+                <span class="arrow"></span>
+                <ul id="monitor" class="level2">
+                    <li>
+                        <a href="#room">实时监测</a>
+                        <span class="arrow"></span>
+                        <ul id="room" class="level3">
+                            <li><a href="#">1#机床</a></li>
+                            <li><a href="#">2#机床</a></li>
+                            <li><a href="#">3#机床</a></li>
+                            <li><a href="#">4#机床</a></li>
+                            <li><a href="#">5#机床</a></li>
+                            <li><a href="#">6#机床</a></li>
+                            <li><a href="#">7#机床</a></li>
+                            <li><a href="#">8#机床</a></li>
+                            <li><a href="#">9#机床</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="historysearch.html" target="_blank">历史查询</a></li>
+                    <li><a href="datacompare.html" target="_blank">数据对比</a></li>
+                </ul>
+            </li>
+            <!--<li><a href="filemanager.html" class="gallery">文件管理</a></li>-->
+            <li class="level1">
+                <a href="#manage" class="addons">用户管理</a>
+                <span class="arrow"></span>
+                <ul id="manage" class="level2">
+                    <li><a href="#">用户信息</a></li>
+                    <li><a href="#">用户管理</a></li>
+                </ul>
+            </li>
+        </ul>
+        <a class="togglemenu"></a>
+        <br /><br />
+    </div><!--leftmenu-->
+
+    <div class="centercontent">
+
+        <div class="pageheader">
+            <h1 class="pagetitle1">上午好!  &nbsp;超级管理员</h1>
+            <br>
+            <!--<div class="starttop"id="starttop"><span class="left">您本次的登灵时间:<span class="num1" id="current_time">2019-03-24  12:00  </span>   &nbsp;&nbsp;&nbsp;&nbsp;如非您本人操作，请及时</span><a href="index.html" target="mainFrame" onFocus="this.blur()">更改密码</a></div>-->
+            <br>
+            <!--<div class="starttop">这是您第<span class="num2">80</span>次,登录！</div>-->
+
+
+        </div><!--pageheader-->
+        <ul class="hornav">
+            <li class="current"><a href="#updates">登入人员信息</a></li>
+        </ul>
+        <div id="contentwrapper1" class="contentwrapper">
+            <p style="font-size: 16px">登陆时间：<span style="color: #0f91f5" id="current_time">2019-03-24  12:00  </span></p>
+            <p style="font-size: 16px">人员权限:&nbsp;&nbsp;<span style="color: #0f91f5">管理员</span></p>
+            <p style="font-size: 16px">&nbsp;&nbsp;&nbsp;登陆IP:&nbsp;&nbsp;<span style="color: #0f91f5">127.0.0.1</span></p>
+        </div>
+        <ul class="hornav">
+            <li class="current"><a href="#updates">机床状态</a></li>
+        </ul>
+        <div id="contentwrapper" class="contentwrapper">
+
+            <div id="updates" class="subcontent">
+
+                <div class="five_seventh dashboard_left">
+                    <br clear="all" />
+
+                    <div class="panel_box row">
+                        <div class="panel col">
+                            <a href="javascript:;" data-url="page/message/message.html">
+                                <div style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon">
+                                    <img id="one_workplace_img1" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word newMessage fontsetting " style="margin-top:10%; ">
+                                    <cite  id="one_workplace1">1#机床监测中...</cite>
+                                    <span id="in1" style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard1.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="panel col">
+                            <a href="javascript:;" data-url="page/user/allUsers.html">
+                                <div  style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon" style="background-color:#FF5722;">
+                                    <img id="one_workplace_img2" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word userAll fontsetting" style="margin-top:10%;">
+                                    <cite id="one_workplace2">2#机床空闲</cite>
+                                    <span style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard2.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="panel col">
+                            <a href="javascript:;" data-url="page/message/message.html">
+                                <div style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon">
+                                    <img id="one_workplace_img3" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word newMessage fontsetting" style="margin-top:10%; ">
+                                    <cite id="one_workplace3">3#机床监测中...</cite>
+                                    <span style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard3.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="panel col">
+                            <a href="javascript:;" data-url="page/user/allUsers.html">
+                                <div  style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon" style="background-color:#FF5722;">
+                                    <img id="one_workplace_img4" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word userAll fontsetting" style="margin-top:10%;">
+                                    <cite id="one_workplace4">4#机床空闲</cite>
+                                    <span style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard4.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="panel col">
+                            <a href="javascript:;" data-url="page/user/allUsers.html">
+                                <div  style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon" style="background-color:#FF5722;">
+                                    <img id="one_workplace_img5" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word userAll fontsetting " style="margin-top:10%;">
+                                    <cite id="one_workplace5">5#机床空闲</cite>
+                                    <span style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard5.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="panel col">
+                            <a href="javascript:;" data-url="page/user/allUsers.html">
+                                <div  style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon" style="background-color:#FF5722;">
+                                    <img id="one_workplace_img6" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word userAll fontsetting" style="margin-top:10%;">
+                                    <cite id="one_workplace6">6#机床空闲</cite>
+                                    <span style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard6.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="panel col" >
+                            <a href="javascript:;" data-url="page/user/allUsers.html">
+                                <div  style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon" style="background-color:#FF5722;">
+                                    <img id="one_workplace_img7" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word userAll fontsetting " style="margin-top:10%;">
+                                    <cite id="one_workplace7">7#机床空闲</cite>
+                                    <span style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard7.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="panel col">
+                            <a href="javascript:;" data-url="page/user/allUsers.html">
+                                <div  style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon" style="background-color:#FF5722;">
+                                    <img id="one_workplace_img8" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word userAll fontsetting" style="margin-top:10%;">
+                                    <cite id="one_workplace8">8#机床空闲</cite>
+                                    <span style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard8.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="panel col">
+                            <a href="javascript:;" data-url="page/message/message.html">
+                                <div style="height:92px;margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;" class="panel_icon">
+                                    <img id="one_workplace_img9" src="images/luntaijingzhi1.jpg" style="width:100%;height:100%;margin: 0px 0px 0px 0px;"alt=""/>
+                                </div>
+                                <div class="panel_word newMessage fontsetting " style="margin-top:10%; ">
+                                    <cite id="one_workplace9">9#机床监测中...</cite>
+                                    <span style="font-size: 10px; color: darkred;text-decoration:underline;" onclick="javascrtpt:window.open('dashboard9.html')">点击进入</span>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                    </div>
+                    </div>
+        </div>
+        <br><br>
+        <ul class="hornav">
+            <li class="current"><a href="#updates">编辑模式</a></li>
+        </ul>
+            <div id="contentwrapper2" class="contentwrapper">
+                <div id="updates1" class="subcontent">
+                    <div class="overviewhead1">
+                        <div class="layui-elem-quote news_search">
+                            <div class="layui-inline">
+                                <a class="layui-btn layui-btn-normal " href="newsAdd.html">添加机床</a>
+                            </div>
+                            &nbsp;
+                            <div class="layui-inline">
+                                <a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+                            </div>
+
+                        </div><!--overviewhead-->
+                    <br clear="all" />
+                        <div class="layui-form news_list">
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col width="50">
+                                    <col width="20%">
+                                    <col width="15%">
+                                    <col width="20%">
+                                    <col width="15%">
+                                    <col width="8%">
+                                    <col width="22%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></th>
+                                    <th style="text-align:left;">机床名称</th>
+                                    <th>创建人</th>
+                                    <th>创建时间</th>
+                                    <th>运行状态</th>
+                                    <th>操作权限</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody class="news_content" >
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></td>
+                                    <td style="text-align:left;">1#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>正在监测</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-disabled layui-btn-danger  " >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend layui-btn-disabled" style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></td>
+                                    <td style="text-align:left;">2#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>空闲</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-danger " >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend " style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></td>
+                                    <td style="text-align:left;">3#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>正在监测</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-danger layui-btn-disabled" >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend layui-btn-disabled" style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></td>
+                                    <td style="text-align:left;">4#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>空闲</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-danger " >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend " style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></td>
+                                    <td style="text-align:left;">5#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>空闲</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-danger " >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend " style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></td>
+                                    <td style="text-align:left;">6#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>空闲</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-danger " >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend " style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></td>
+                                    <td style="text-align:left;">7#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>空闲</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-danger " >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend " style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></td>
+                                    <td style="text-align:left;">8#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>空闲</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-danger " >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend " style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr  >
+                                    <td><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" ></td>
+                                    <td style="text-align:left;">9#机床</td>
+                                    <td >张三</td>
+                                    <td>2018-01-02</td>
+                                    <td>正在监测</td>
+                                    <td>有</td>
+                                    <td>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 layui-btn-danger layui-btn-disabled" >删除</a>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <a class="layui-btn1 recommend layui-btn-disabled" style="background-color:#5FB878">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="page"></div>
+                </div><!--two_third dashboard_left -->
+
+            </div><!-- #updates -->
+
+            <div id="activities" class="subcontent" style="display: none;">
+                &nbsp;
+            </div><!-- #activities -->
+        </div><!--contentwrapper-->
+
+        <br clear="all" />
+
+    </div><!-- centercontent -->
+
+
+</div><!--bodywrapper-->
+
+</body>
+<script type="text/javascript" src="layui/layui/layui.js"></script>
+<script type="text/javascript" src="layui/page/news/newsList.js"></script>
+<script src="icon/iconfont.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/video/demo.js"></script>
+<script type="text/javascript" id="videonode" src="js/video/webVideoCtrl.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="js/custom/general.js"></script>
+<script type="text/javascript" src="js/custom/dashboard.js"></script>
+<script type="text/javascript" src="js/highcharts/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts/series-label.js"></script>
+<script type="text/javascript" src="js/highcharts/exporting.js"></script>
+<script>
+
+window.onload=function () {
+    var myDate = new Date();
+    var mydate=myDate.toLocaleString( );
+    $("#current_time").html(mydate);
+    getRoomstate();
+    setInterval(getRoomstate,2000);
+}
+
+function haha() {
+    alert("nihao");
+
+}
+</script>
+
+</html>

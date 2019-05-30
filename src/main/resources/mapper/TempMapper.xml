@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
+<mapper namespace="chaoyang.tempmonitor.mapper.TempMapper">
+
+    <!-- insert tempinfo -->
+    <insert id="insert" parameterType="chaoyang.tempmonitor.model.TempInfo">
+        INSERT INTO TEMP_INFO(tire_number,room_number,cam_ip,cam_station_number,temp_dwSize,temp_dwRelativeTime,temp_dwAbsTime,temp_szRuleName,temp_byRuleID,temp_byRuleCalibType,temp_wPresetNo,temp_byThermometryUnit,temp_byDataType,temp_bySpecialPointThermType,temp_fCenterPointTemperature,temp_fHighestPointTemperature,temp_fLowestPointTemperature,temp_byRes)
+        VALUES(#{tire_number},#{room_number},#{cam_ip},#{cam_station_number},#{temp_dwSize},#{temp_dwRelativeTime},#{temp_dwAbsTime},#{temp_szRuleName},#{temp_byRuleID},#{temp_byRuleCalibType},#{temp_wPresetNo},#{temp_byThermometryUnit},#{temp_byDataType},#{temp_bySpecialPointThermType},#{temp_fCenterPointTemperature},#{temp_fHighestPointTemperature},#{temp_fLowestPointTemperature},#{temp_byRes});
+    </insert>
+
+    <!-- update tempinfo -->
+    <update id="update" parameterType="chaoyang.tempmonitor.model.User">
+        UPDATE USER_INFO SET name=#{username} , password=#{password} WHERE ID=#{id}
+    </update>
+
+
+    <!-- find tempinfo -->
+    <select id="find" parameterType="int" resultType="chaoyang.tempmonitor.model.TempInput">
+        SELECT DISTINCT ti.sample_id, ti.room_number, ti.cam_ip, ppi.point_type, ppi.point_type_number, ppi.point_type_index, ppi.point_x, ppi.point_y, pti.plp_fMaxTemperature, pti.plp_fMinTemperature, pti.plp_fAverageTemperature, pti.plp_fTemperatureDiff, pti.plp_fTemperature
+        from temp_info as ti LEFT JOIN point_info as ppi on ti.sample_id = ppi.sample_id join plp_temp_info as pti on ti.sample_id = pti.sample_id
+        WHERE ti.sample_id=#{sample_id};
+    </select>
+
+    <!-- find cam_ip -->
+    <select id="getCamIP" parameterType="java.util.Map" resultType="chaoyang.tempmonitor.model.CamIpAndCamPosi">
+        SELECT cam_ip,cam_position from ROOM_INFO WHERE room_number=#{room_number} AND cam_station_number=#{cam_station_number};
+     </select>
+
+    <!-- find tire_number -->
+    <select id="getTireNumber" parameterType="java.util.Map" resultType="java.lang.String">
+       SELECT DISTINCT si.tire_number from SAMPLE_INFO as si LEFT JOIN  ROOM_INFO as ri on si.room_number = ri.room_number AND si.cam_ip = ri.cam_ip WHERE ri.room_number = #{room_number} and ri.cam_ip = #{cam_ip};
+     </select>
+
+    <!--&lt;!&ndash; find tire_number &ndash;&gt;-->
+    <select id="getSampleName" parameterType="java.util.Map" resultType="java.lang.String">
+        SELECT DISTINCT tire_number from SAMPLE_INFO WHERE room_number = #{room_number} and cam_ip = #{cam_ip};
+     </select>
+
+     <!--find tire_number-->
+    <select id="getTestDate" parameterType="java.util.Map" resultType="java.lang.String">
+        SELECT DISTINCT si.sample_test_date from SAMPLE_INFO as si LEFT JOIN  ROOM_INFO as ri on si.room_number = ri.room_number AND si.cam_ip = ri.cam_ip WHERE room_number = #{room_number} and cam_ip = #{cam_ip};
+     </select>
+
+    <select id="getRuleID" parameterType="java.util.Map" resultType="java.lang.String">
+        <bind name="fStartTime" value="sample_test_date +'%'" />
+        SELECT DISTINCT plp.sample_type_number AS ruleID FROM PLP_TEMP_INFO AS plp
+        WHERE plp.cam_ip in (SELECT ri.cam_ip FROM room_info AS ri WHERE ri.room_number = #{room_number})
+        AND plp.cam_station_number = #{cam_station_number}
+        AND plp.cam_ip=#{cam_ip}
+        AND plp.tire_number=#{tire_number}
+        AND plp.plp_fixStartTime LIKE #{fStartTime};
+     </select>
+
+    <select id="getStartTime" parameterType="java.util.Map" resultType="java.lang.String">
+       <bind name="fStartTime" value="sample_test_date +'%'" />
+        SELECT DISTINCT plp.plp_fixStartTime AS startTime FROM PLP_TEMP_INFO AS plp
+        WHERE plp.cam_ip in (SELECT ri.cam_ip FROM room_info AS ri WHERE ri.room_number=#{room_number})
+        AND plp.cam_station_number = #{cam_station_number}
+        AND plp.cam_ip=#{cam_ip}
+        AND plp.tire_number=#{tire_number}
+        AND plp.plp_fixStartTime LIKE #{fStartTime};
+     </select>
+
+    <!-- find sample_type -->
+    <select id="getSampleType" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT DISTINCT sample_type from PLP_TEMP_INFO WHERE tire_number=#{tire_number} and cam_ip = #{cam_ip};
+     </select>
+
+    <!-- find sample_type_number -->
+    <select id="getSampleTypeNum" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT DISTINCT sample_type_number from PLP_TEMP_INFO WHERE tire_number = #{tire_number} and sample_type = #{sample_type} ORDER BY sample_type_number ASC;
+     </select>
+
+    <!-- find temp -->
+    <select id="getTempInfo" parameterType="java.util.Map" resultType="chaoyang.tempmonitor.model.SearchTemp">
+        SELECT plp.plp_timediff, plp.plp_fMaxTemperature,plp.sample_type_number
+        from plp_temp_info as plp
+        where plp.cam_ip=#{cam_ip}
+        AND plp.cam_station_number=#{cam_station_number}
+        AND plp.tire_number=#{tire_number}
+        AND plp.sample_type_number in (1,2,3)
+        <if test="plp_timeDiff != 0">
+            AND plp.plp_timeDiff BETWEEN 0 AND #{plp_timeDiff}
+        </if>
+        AND plp.plp_fixStartTime >= #{sample_test_date}
+     </select>
+
+    <!--获取历史查询中的批次信息-->
+    <select parameterType="java.util.Map" id="getSampleInfoHis" resultType="chaoyang.tempmonitor.model.SampleInfoHis">
+select cam_station_number, sample_specification, sample_level, sample_pattern, tire_number, sample_test_date, sample_person, sample_number
+from sample_info
+where room_number = #{room_number} and cam_ip = #{cam_ip} and tire_number = #{tire_number}
+</select>
+    <!--get the temperature information for the dashboard-->
+<select id="getTempInfoDash" parameterType="java.util.Map" resultType="chaoyang.tempmonitor.model.TempDashboard">
+SELECT  ri.cam_id, ri.cam_position, plp.sample_type_number, plp.plp_timediff, plp.plp_fMaxTemperature
+       from plp_temp_info as plp, room_info as ri
+       where  plp.tire_number = #{tire_number}
+        and plp.cam_station_number = #{cam_station_number}
+        and plp.cam_ip = ri.cam_ip
+        and ri.room_number = #{room_number}
+</select>
+
+    <!--get the image-->
+    <select id="getImage" parameterType="java.util.Map" resultType="java.lang.String">
+       <!-- <bind name="fStartTime" value="sample_test_date +'%'" />  -->
+        SELECT DISTINCT plp.plp_photo_position AS plp_photo_position FROM plp_temp_info as plp
+        WHERE plp.cam_ip in (SELECT ri.cam_ip FROM room_info AS ri WHERE ri.room_number=#{room_number})
+        AND plp.cam_station_number = #{cam_station_number}
+        AND plp.cam_ip=#{cam_ip}
+        AND plp.tire_number=#{tire_number}
+        AND plp.plp_fixStartTime > #{sample_test_date}
+        AND plp.sample_type_number = 1
+        AND plp.plp_timeDiff = #{timeDiff}
+        Limit 1
+    </select>
+
+    <select id="getImageAll" parameterType="java.util.Map" resultType="java.lang.String">
+        <!-- <bind name="fStartTime" value="sample_test_date +'%'" />  -->
+        SELECT DISTINCT plp.plp_photo_position AS plp_photo_position FROM plp_temp_info as plp
+        WHERE plp.cam_station_number in (SELECT ri.cam_station_number FROM room_info AS ri WHERE ri.room_number=#{room_number})
+        AND plp.cam_station_number = #{cam_station_number}
+        AND plp.tire_number=#{tire_number}
+        AND plp.plp_fixStartTime > #{sample_test_date}
+        <!--AND plp.sample_type_number = 1
+        AND plp.sample_type = 1   -->
+        <if test="plp_timeDiff != 0">
+            AND plp.plp_timeDiff BETWEEN 0 AND #{plp_timeDiff}
+        </if>
+        ORDER BY plp.plp_fMaxTemperature DESC LIMIT 1;
+</select>
+
+
+
+<!--get the cam_position-->
+    <select id="getCam_position" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT DISTINCT cam_position FROM room_info WHERE cam_ip = #{cam_ip};
+    </select>
+
+
+    <!-- find temp -->
+    <select id="showImage" parameterType="java.util.Map" resultType="java.lang.String">
+      SELECT DISTINCT plp.plp_photo_position
+       from plp_temp_info as plp, room_info as ri, sample_info as si,point_info as ppi
+       where ri.room_number = #{room_number}
+              and ri.cam_ip = #{cam_ip}
+              and si.tire_number = #{tire_number}
+              and plp.sample_type = #{sample_type}
+              and plp.sample_type_number = #{sample_type_number}
+              and plp.plp_currTime = #{plp_currTime}
+              and ri.room_number = si.room_number
+              and si.tire_number = plp.tire_number
+              and ppi.tire_number = si.tire_number
+     </select>
+
+    <!-- delete tempinfo -->
+    <delete id="delete">
+        DELETE FROM TEMP_INFO WHERE sample_id=#{sample_id};
+    </delete>
+
+    <!-- find tempinfo  wcc-->
+    <select id="SearchTemp" parameterType="int" resultType="chaoyang.tempmonitor.model.SearchTemp">
+       SELECT sample_info.tire_number, plp_temp_info.plp_fMaxTemperature, plp_temp_info.plp_fMinTemperature, plp_temp_info.plp_fAverageTemperature
+       from plp_temp_info, sample_info
+       where sample_info.room_number = #{roomid}
+              and sample_info.cam_id = 1
+              and sample_info.sample_id = plp_temp_info.sample_id
+              and sample_info.sample_id = 1
+              and plp_temp_info.point_type = 1
+              and plp_temp_info.point_type_number = 1
+    </select>
+
+    <!-- find-->
+    <select id="selectTemp" parameterType="chaoyang.tempmonitor.model.TempInput"  resultType="chaoyang.tempmonitor.model.SearchTemp">
+       SELECT si.tire_number, plp.plp_currTime, plp.plp_fMaxTemperature, plp.plp_fMinTemperature, plp.plp_fAverageTemperature
+       from plp_temp_info as plp,  sample_info as si
+       where si.room_number = #{room_number}
+              and si.cam_ip = #{cam_ip}
+              and si.tire_number = #{tire_number}
+              and plp.sample_type = #{sample_type}
+              and plp.sample_type_number = #{sample_type_number}
+              and si.tire_number = plp.tire_number
+    </select>
+
+    <select id="queryData" parameterType="java.util.Map" resultType="chaoyang.tempmonitor.model.QueryData">
+  <!--      <bind name="fStartTime" value="sample_test_date +'%'" />  -->
+        SELECT DISTINCT si.sample_specification,si.sample_level,si.sample_pattern,si.sample_number,si.sample_person,si.sample_test_date,si.tire_number,si.room_number,si.cam_station_number,si.sample_object_name from sample_info as si
+        <where>
+            <if test="sample_specification != '' and sample_specification != null">
+                AND si.sample_specification = #{sample_specification}
+            </if>
+            <if test="sample_level != '' and sample_level != null">
+                AND si.sample_level = #{sample_level}
+            </if>
+            <if test="sample_pattern != '' and sample_pattern != null">
+                AND si.sample_pattern = #{sample_pattern}
+            </if>
+            <if test="sample_number != '' and sample_number != null">
+                AND si.sample_number = #{sample_number}
+            </if>
+            <if test="sample_person != '' and sample_person != null">
+                AND si.sample_person = #{sample_person}
+            </if>
+            <if test="sample_object_name != '' and sample_object_name != null">
+                AND si.sample_object_name = #{sample_object_name}
+            </if>
+            <if test="tire_number != '' and tire_number != null">
+                AND si.tire_number = #{tire_number}
+            </if>
+            <if test="cam_station_number != '' and cam_station_number != -1">
+                AND si.cam_station_number = #{cam_station_number}
+            </if>
+            <if test="room_number != '' and room_number != -1">
+                AND si.room_number = #{room_number}
+            </if>
+            <if test="sample_test_date != '' and sample_test_date != null">
+                <if test="stopTime == null or stopTime == ''">
+                    AND si.sample_test_date = #{sample_test_date}
+                </if>
+                <if test="stopTime != null and stopTime != ''">
+                    AND si.sample_test_date between #{sample_test_date} AND #{stopTime}
+
+                </if>
+            </if>
+
+        </where>
+        Order By sample_test_date Desc limit #{curr},#{nums};
+
+    </select>
+    <select id="queryDataCount" parameterType="java.util.Map" resultType="java.lang.String">
+        SELECT COUNT(DISTINCT sample_specification,sample_level,sample_pattern,sample_number,sample_person,sample_test_date,tire_number,room_number,cam_station_number,sample_object_name) from sample_info as si
+        <where>
+            <if test="sample_specification != '' and sample_specification != null">
+                AND si.sample_specification = #{sample_specification}
+            </if>
+            <if test="sample_level != '' and sample_level != null">
+                AND si.sample_level = #{sample_level}
+            </if>
+            <if test="sample_pattern != '' and sample_pattern != null">
+                AND si.sample_pattern = #{sample_pattern}
+            </if>
+            <if test="sample_number != '' and sample_number != null">
+                AND si.sample_number = #{sample_number}
+            </if>
+            <if test="sample_person != '' and sample_person != null">
+                AND si.sample_person = #{sample_person}
+            </if>
+            <if test="tire_number != '' and tire_number != null">
+                AND si.tire_number = #{tire_number}
+            </if>
+            <if test="cam_station_number != '' and cam_station_number != -1">
+                AND si.cam_station_number = #{cam_station_number}
+            </if>
+            <if test="room_number != '' and room_number != -1">
+                AND si.room_number = #{room_number}
+            </if>
+            <if test="sample_test_date != '' and sample_test_date != null">
+                <if test="stopTime == null or stopTime == ''">
+                    AND si.sample_test_date = #{sample_test_date}
+                </if>
+                <if test="stopTime != null and stopTime != ''">
+                    AND si.sample_test_date between #{sample_test_date} AND #{stopTime}
+                </if>
+            </if>
+        </where>
+    </select>
+</mapper>

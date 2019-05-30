@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章添加--layui后台管理模板</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="layui/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="layui/css/font_eolqem241z66flxr.css" media="all" />
+</head>
+<body class="childrenBody">
+	<form class="layui-form">
+		<div class="layui-form-item">
+			<label class="layui-form-label">机床名称</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input newsName" style="width: 45%;"lay-verify="required" placeholder="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+
+			<div class="layui-inline">		
+				<label class="layui-form-label">创建人</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input newsAuthor" lay-verify="required" placeholder="请输入姓名">
+				</div>
+			</div>
+			<div class="layui-inline">		
+				<label class="layui-form-label">创建时间</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input newsTime" lay-verify="date" onclick="layui.laydate({elem:this})">
+				</div>
+			</div>
+			<div >
+				<label class="layui-form-label">操作权限</label>
+				<div class="layui-input-inline">
+					<select name="browseLook" class="newsLook" lay-filter="browseLook">
+						<option value="0">开放操作</option>
+						<option value="1">仅超级管理员可编辑</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="layui-input-inline">
+			<label class="layui-form-label" style="width: 120px;">仓位1摄像头左IP</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input newsTime" lay-verify="date" onclick="layui.laydate({elem:this})">
+			</div>
+		</div>
+
+		<div class="layui-input-inline">
+			<label class="layui-form-label" style="width: 120px;">仓位1摄像头中IP</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input newsTime" lay-verify="date" onclick="layui.laydate({elem:this})">
+			</div>
+		</div>
+
+		<div class="layui-input-inline">
+			<label class="layui-form-label" style="width: 120px;">仓位1摄像头右IP</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input newsTime" lay-verify="date" onclick="layui.laydate({elem:this})">
+			</div>
+		</div>
+		<br>
+<br>
+		<div class="layui-input-inline">
+			<label class="layui-form-label" style="width: 120px;">仓位2摄像头左IP</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input newsTime" lay-verify="date" onclick="layui.laydate({elem:this})">
+			</div>
+		</div>
+
+		<div class="layui-input-inline">
+			<label class="layui-form-label" style="width: 120px;">仓位2摄像头中IP</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input newsTime" lay-verify="date" onclick="layui.laydate({elem:this})">
+			</div>
+		</div>
+
+		<div class="layui-input-inline">
+			<label class="layui-form-label" style="width: 120px;">仓位2摄像头右IP</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input newsTime" lay-verify="date" onclick="layui.laydate({elem:this})">
+			</div>
+		</div>
+
+	<br>
+		<br>
+		<div class="layui-form-item">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="layui-input-block">
+				<button class="layui-btn" lay-submit="" lay-filter="addNews">立即添加</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    </div>
+		</div>
+	</form>
+
+	<script type="text/javascript" src="layui/layui/layui.js"></script>
+	<script type="text/javascript" src="layui/page/news/newsAdd.js"></script>
+</body>
+</html>
